@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css"
+    href="{{ url_for('static', filename='main.css') }}"/>
+</head>
+<div style="padding: 20px; background-color: #eee ; margin: 40px">
+<div class="center"> 
+    <body>
+    <h1>Python Flask Calculator</h1>
+    <h2>Please fill out the form below</h2>
+    <form method="post" action="{{ url_for('operation_result') }}" id="calculator_form">
+        <label for="weight">Weight in kg:</label>
+        <input type="number" name="weight" id="weight">
+        <br/>
+        <label for="height">Height in cm:</label>
+        <input type="number" name="height" id="height">
+        <br/>
+        <label for="age">Age in years:</label>
+        <input type="number" name="age" id="age">
+        <br/>
+        <h3>Gender:</h3>
+        <label for="male">Male</label>
+        <input type="radio" name="gender" id="male" value="male">
+        <label for="female">Female</label>
+        <input type="radio" name="gender" id="female" value="female">
+        <br/>
+        <input type="range" id="activity" name="activity" min="1" max="2" value="0" step="0.1"
+        oninput="this.nextElementSibling.value = this.value">
+        <output>1</output>
+        <label for="activity">Activity level</label>
+        <ul>    
+            <li>Completely Paralyzed, Comatose, Unable to Move Without the Aid of Others (1.0)</li>
+            <li>Immobile, Stationary with Some Arm Movement, Bedridden or Partially Paralyzed (1.05)</li>
+            <li>Constricted Lifestyle, Movement is Limited to a Confined Space, Almost Always Sitting or Laying (1.1)</li>
+            <li>Working From Home with Little to No Travel, No Exercise, Some Walking, Mostly Sitting or Laying (1.16)</li>
+            <li>Sedentary Lifestyle, Little or No Exercise, Moderate Walking, Desk Job (Away from Home) (1.2)</li>
+            <li>Slightly Active, Exercise or Light Sports 1 to 3 Days a Week, Light Jogging or Walking 3 to 4 Days a Week (1.375)</li>
+            <li>Lightly Active, Exercise or Moderate Sports 2 to 3 Days a Week, Light Jogging or Walking 5 to 7 Days a Week (1.425)</li>
+            <li>Moderately Active, Physical Work, Exercise, or Sports 4 to 5 Days a Week, Construction Laborer (1.55)</li>
+            <li>Very Active, Heavy Physical Work, Exercise, or Sports 6 to 7 Days a Week, Hard Laborer (1.75)</li>
+            <li>Extremely Active, Very Heavy Physical Work or Exercise Every Day, Professional/Olympic Athlete (1.9)</li>
+            <li>Superhero, Greek god, Non-human (2.0)</li>
+        </ul>
+        <br/>      
+        <label for="algo">Algorithm used:</label>
+        <select id="algo" name="algo">
+            <option value="jeor">Mifflin St Jeor</option>
+            <option value="-">Katch-McArdle (Hybrid)</option>
+        </select>
+        <br/>
+        <input type="submit" value="Submit"/>
+        <input type="reset"  value="RESET" style="color: red;"/>
+    </form>
+    {% if calculation_success == True %}
+        <br/>
+        <p>Your BMR is: {{bmr_result}} Kcal</p>
+        <p>Your TDEE is: {{tdee_result}} Kcal</p>
+    {% endif %}
+    {% if calculation_success == False %}
+        <br/>
+        <p>{{error}}</p>
+        <p>ante bra = "{{bmr_result}}"</p>
+    {% endif %}
+</div>
+</body>
+</div>
+</html>
