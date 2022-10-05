@@ -45,8 +45,8 @@ def operation_result():
         activity = float(activity)
 
         # On default, the operation on webpage is addition
-        if algi == "jeor":
-            bmr_result = do_calculation(weight, height, age, gender)
+        if algo == "jeor":
+            bmr_result = do_calculation(weight, height, age, gender, algo)
             tdee_result = bmr_result * activity
         elif operation == "-":
             bmr_result = input1 - input2

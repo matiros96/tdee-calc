@@ -7,7 +7,7 @@ Variables: W=weight in kilograms, H=height in centimeters, A=age in years
 https://www.sailrabbit.com/bmr/
 '''
 
-def do_calculation(weight, height, age, gender, alg):
+def do_calculation(weight, height, age, gender, algo):
     if gender == 'male':
         bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5
         return bmr
